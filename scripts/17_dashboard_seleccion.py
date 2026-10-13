@@ -49,7 +49,7 @@ html = """<meta charset="utf-8">
     <div class="logo"><img src="__LOGO__" alt="Extramuros"></div>
     <div>
       <h1>Mapa de la Selección</h1>
-      <div class="sub">Quién controla el acceso y la formación de cada cuerpo de funcionarios del Estado, y quién nombró a cada responsable.</div>
+      <div class="sub">Quién controla el acceso y la formación de cada cuerpo de funcionarios (Estado, Justicia, órganos constitucionales, entidades locales, universidades y comunidades autónomas), y quién nombró a cada responsable.</div>
     </div>
     <div class="meta"><span>Foto a <b>13 oct 2026</b></span><span>Fuentes: BOE, webs oficiales y el censo del Mapa del Relevo</span></div>
   </div>
@@ -96,6 +96,7 @@ html = """<meta charset="utf-8">
       <div class="field"><label for="fAmb">Ámbito</label><select id="fAmb"></select></div>
       <div class="field"><label for="fGr">Grupo</label><select id="fGr"></select></div>
       <div class="field"><label for="fMin">Ministerio que convoca</label><select id="fMin"></select></div>
+      <div class="field"><label for="fCom">Comunidad autónoma</label><select id="fCom"></select></div>
     </div>
     <div class="frow">
       <div class="chips" id="cInd" role="group" aria-label="Indicadores"></div>
@@ -122,18 +123,20 @@ html = """<meta charset="utf-8">
   const fmt = d => d ? d.split('-').reverse().join('/') : '';
   const shortMin = m => (m||'').replace(/^Ministerio (de la |del |de |para la )?/,'');
   const IND = [['trib_alto','Tribunal: alto cargo','ia'],['trib_cargo','Tribunal: cargo directivo','ic'],['repite','Repite presidencia','ir'],['partido','Partido en la cadena','ip'],['nombr_actual','Nombrado con Sánchez','ig'],['con_zp','Nombrado con ZP','ig'],['zp_y_s','Con ZP y con Sánchez','ip']];
-  const st = {q:'', amb:'', gr:'', min:'', ind:new Set()};
+  const st = {q:'', amb:'', gr:'', min:'', com:'', ind:new Set()};
   const opts = (sel, vals, all) => { sel.innerHTML = `<option value="">${all}</option>` + vals.map(v=>`<option value="${esc(v)}">${esc(v)}</option>`).join(''); };
   opts($('#fAmb'), [...new Set(D.map(c=>c.ambito))], 'Todos');
   opts($('#fGr'), [...new Set(D.map(c=>c.grupo).filter(Boolean))].sort(), 'Todos');
   const mins = [...new Set(D.map(c=>c.ministerio).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'es'));
   $('#fMin').innerHTML = '<option value="">Todos</option>' + mins.map(m=>`<option value="${esc(m)}">${esc(shortMin(m))}</option>`).join('');
+  opts($('#fCom'), [...new Set(D.map(c=>c.comunidad).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'es')), 'Todas');
   $('#cInd').innerHTML = IND.map(([k,t,c])=>`<button type="button" class="chip c-${c}" data-k="${k}" aria-pressed="false"><span class="dot"></span>${t}</button>`).join('');
 
   function match(c){
     if (st.amb && c.ambito!==st.amb) return false;
     if (st.gr && c.grupo!==st.gr) return false;
     if (st.min && c.ministerio!==st.min) return false;
+    if (st.com && c.comunidad!==st.com) return false;
     for (const k of st.ind) if (!c.ind.includes(k)) return false;
     if (st.q){ const t=norm(st.q); if (!norm(c.cuerpo+' '+c.nodos.map(n=>n.nombre+' '+(n.puesto||'')).join(' ')).includes(t)) return false; }
     return true;
@@ -155,7 +158,7 @@ html = """<meta charset="utf-8">
     if (!n) return `<div class="step vacio"><div class="r">${rol}</div><div><div class="who">${vacio}</div></div></div>`;
     const boe = (n.boe||'').match(/BOE-A-\\d{4}-\\d+/);
     const por = n.nombrado_por ? `nombrado por <b>${esc(n.nombrado_por)}</b>` : '';
-    const cuando = n.desde ? `el ${fmt(n.desde)}${n.gob?` (${esc(n.gob)})`:''}` : '';
+    const cuando = n.desde ? `el ${fmt(n.desde)}${n.gob?` (${esc(n.gob)})`:''}${n.gobierno_que_nombra?` (gobierno de ${esc(n.gobierno_que_nombra)})`:''}` : '';
     const trib = n.nombrado_tribunal_por ? `<div class="by">Designado para el tribunal por <b>${esc(n.nombrado_tribunal_por)}</b></div>` : '';
     return `<div class="step"><div class="r">${rol}</div><div>
       <div class="who">${esc(n.nombre)}</div>
@@ -173,7 +176,7 @@ html = """<meta charset="utf-8">
     $('#cards').innerHTML = R.length ? R.map(c=>{
       const by = r => c.nodos.find(n=>n.rol===r);
       const ind = c.ind.filter(k=>k!=='nombr_actual').map(k=>{ const i=IND.find(x=>x[0]===k); return `<span class="bd ${i[2]}">${i[1]}</span>`; }).join(' ');
-      return `<article class="card"><header><h3>${esc(c.cuerpo)}</h3>${c.grupo?`<span class="gr">${esc(c.grupo)}</span>`:''}<div class="meta">${esc(c.ambito)}${c.ministerio?' · '+esc(shortMin(c.ministerio)):''}</div></header>
+      return `<article class="card"><header><h3>${esc(c.cuerpo)}</h3>${c.grupo?`<span class="gr">${esc(c.grupo)}</span>`:''}<div class="meta">${esc(c.ambito)}${c.comunidad?' · '+esc(c.comunidad):''}${c.ministerio?' · '+esc(shortMin(c.ministerio)):''}</div></header>
         ${ind?`<div class="ind" style="padding-top:10px">${ind}</div>`:''}
         <div class="chain">
           ${paso('Convoca', by('Convoca y aprueba el temario'), 'Órgano convocante sin titular identificado')}
@@ -186,18 +189,20 @@ html = """<meta charset="utf-8">
           ${c.nombra_tribunal?`<p><b>Tribunal:</b> ${esc(c.nombra_tribunal).slice(0,400)}</p>`:''}
           ${c.examen?`<p><b>Examen:</b> ${esc(c.examen)}</p>`:''}
           ${c.formacion?`<p><b>Formación:</b> ${esc(c.formacion)}${c.dirige_formacion?' · '+esc(c.dirige_formacion):''}</p>`:''}
+          ${c.notas?`<p><b>Notas:</b> ${esc(c.notas)}</p>`:''}
           <p>${link(c.fuente,'Convocatoria')}${c.tribunal&&c.tribunal.url?' · '+link(c.tribunal.url,'Tribunal'):''}</p>
         </details></article>`;
     }).join('') : '<div class="empty">Ningún cuerpo con estos filtros.</div>';
-    const n=(st.q?1:0)+(st.amb?1:0)+(st.gr?1:0)+(st.min?1:0)+st.ind.size; $('#fcount').textContent = n? n+' activos':'';
+    const n=(st.q?1:0)+(st.amb?1:0)+(st.gr?1:0)+(st.min?1:0)+(st.com?1:0)+st.ind.size; $('#fcount').textContent = n? n+' activos':'';
     document.querySelectorAll('#cInd .chip').forEach(b=>b.setAttribute('aria-pressed', st.ind.has(b.dataset.k)));
   }
   $('#q').addEventListener('input', e=>{ st.q=e.target.value; render(); });
   $('#fAmb').addEventListener('change', e=>{ st.amb=e.target.value; render(); });
   $('#fGr').addEventListener('change', e=>{ st.gr=e.target.value; render(); });
   $('#fMin').addEventListener('change', e=>{ st.min=e.target.value; render(); });
+  $('#fCom').addEventListener('change', e=>{ st.com=e.target.value; render(); });
   $('#cInd').addEventListener('click', e=>{ const b=e.target.closest('.chip'); if(!b) return; const k=b.dataset.k; st.ind.has(k)?st.ind.delete(k):st.ind.add(k); render(); });
-  $('#reset').addEventListener('click', ()=>{ Object.assign(st,{q:'',amb:'',gr:'',min:''}); st.ind.clear(); ['#q','#fAmb','#fGr','#fMin'].forEach(s=>$(s).value=''); render(); });
+  $('#reset').addEventListener('click', ()=>{ Object.assign(st,{q:'',amb:'',gr:'',min:'',com:''}); st.ind.clear(); ['#q','#fAmb','#fGr','#fMin','#fCom'].forEach(s=>$(s).value=''); render(); });
   $('#ftoggle').addEventListener('click', ()=>{ const f=$('.filters'); const ab=!f.classList.contains('abierto'); f.classList.toggle('abierto', ab); $('#ftoggle').setAttribute('aria-expanded', ab); });
   if (window.matchMedia('(max-width:760px)').matches){ $('#legend').open=false; $('#aviso').open=false; }
   render();

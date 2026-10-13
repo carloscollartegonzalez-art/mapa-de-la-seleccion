@@ -17,14 +17,167 @@
   "condicion": "",
   "departamento": "MINISTERIO DE AGRICULTURA, PESCA Y ALIMENTACIÓN"
  },
+ "pilar martin najera": {
+  "puesto": "Fiscal de Sala Jefa de la Fiscalía del Tribunal Supremo (Sección Civil)",
+  "fecha": "2026-05-27",
+  "boe": "BOE-A-2026-11477",
+  "rango": "Real Decreto",
+  "mecanismo": "Real decreto",
+  "condicion": "",
+  "departamento": "MINISTERIO DE LA PRESIDENCIA, JUSTICIA Y RELACIONES CON LAS CORTES"
+ },
  "ana maria roman riechmann": {
-  "puesto": "Subsecretaría del Interior, Dirección General de Protección Civil y Emergencias. Coordinador de Área",
-  "fecha": "2011-06-01",
-  "boe": "BOE-A-2011-10206",
+  "puesto": "Subdirector / Subdirectora general — Secretaría de Estado de Educación, Formación Profesional y Universidades",
+  "fecha": "2012-12-20",
+  "boe": "BOE-A-2013-61",
+  "rango": "Resolución",
+  "mecanismo": "Libre designación (literal)",
+  "condicion": "Cuerpo Superior de Sistemas y Tecnologías de la Información de la Administración del Estado",
+  "departamento": "MINISTERIO DE EDUCACIÓN, CULTURA Y DEPORTE"
+ },
+ "concepcion andreu rodriguez desde antes guillermo fernandez vara": {
+  "puesto": "Presidente de la Comunidad Autónoma de Extremadura",
+  "fecha": "2019-06-26",
+  "boe": "BOE-A-2019-9598",
+  "rango": "Real Decreto",
+  "mecanismo": "Real decreto",
+  "condicion": "",
+  "departamento": "PRESIDENCIA DEL GOBIERNO"
+ },
+ "nuria esther exposito beneitez": {
+  "puesto": "Instituto de Salud Carlos III Secretaría General Secretario/Secretaria General",
+  "fecha": "2020-03-10",
+  "boe": "BOE-A-2020-3872",
+  "rango": "Resolución",
+  "mecanismo": "Libre designación (literal)",
+  "condicion": "E. Tecn. Sup. Espec. de OO.PP. de Investigación.",
+  "departamento": "MINISTERIO DE CIENCIA E INNOVACIÓN"
+ },
+ "cristobal cremades rodriguez": {
+  "puesto": "Jefe/Jefa Provincial",
+  "fecha": "2021-02-01",
+  "boe": "BOE-A-2021-1629",
+  "rango": "Resolución",
+  "mecanismo": "Libre designación (literal)",
+  "condicion": "E. Superior de Técnicos de Tráfico.",
+  "departamento": "MINISTERIO DEL INTERIOR"
+ },
+ "maria elena alonso ventura": {
+  "puesto": "MUT. GRAL. FUNC. CIVILES DEL E. -MUFACE-. UNIDAD DE APOYO. JEFE/JEFA DE OFICINA DEL PARTICIPE",
+  "fecha": "2022-04-01",
+  "boe": "BOE-A-2022-5598",
+  "rango": "Resolución",
+  "mecanismo": "Libre designación (literal)",
+  "condicion": "C. SUP. ADMINISTRADORES CIVILES DEL EST.",
+  "departamento": "MINISTERIO DE HACIENDA Y FUNCIÓN PÚBLICA"
+ },
+ "juan diaz rokiski": {
+  "puesto": "Director/Directora Territorial Inspección de Trabajo y Seguridad Social de la Dirección Territorial Inspección de Trabajo y Seguridad Social de Castilla-La Mancha",
+  "fecha": "2012-09-03",
+  "boe": "BOE-A-2012-11571",
   "rango": "Orden",
   "mecanismo": "Libre designación (literal)",
-  "condicion": "C. Superior de Sistemas y Tecnolog. Información Admón. del Estado",
-  "departamento": "MINISTERIO DEL INTERIOR"
+  "condicion": "",
+  "departamento": "MINISTERIO DE EMPLEO Y SEGURIDAD SOCIAL"
+ },
+ "fernando garcia ruiz": {
+  "puesto": "",
+  "fecha": "2026-06-25",
+  "boe": "BOE-A-2026-14031",
+  "rango": "Resolución",
+  "mecanismo": "",
+  "condicion": "",
+  "departamento": "MINISTERIO PARA LA TRANSFORMACIÓN DIGITAL Y DE LA FUNCIÓN PÚBLICA"
+ },
+ "vacante": {
+  "puesto": "DEPARTAMENTO DE INFORMATICA TRIBUTARIA. S.G.DE TECNOLOGIAS ANAL.INF.E INV.FRAUDE. JEFE/A SERVICIO ESPECIAL INFORMATICA. MADRID",
+  "fecha": "2026-07-14",
+  "boe": "BOE-A-2026-15747",
+  "rango": "Resolución",
+  "mecanismo": "Libre designación (literal)",
+  "condicion": "",
+  "departamento": "MINISTERIO DE HACIENDA"
+ },
+ "aranzazu lafuente urien": {
+  "puesto": "Director/Directora del Archivo Sección Nobleza",
+  "fecha": "2016-02-10",
+  "boe": "BOE-A-2016-1887",
+  "rango": "Resolución",
+  "mecanismo": "Libre designación (literal)",
+  "condicion": "Cuerpo Facultativo de Archiveros, Bibliotecarios y Arqueólogos",
+  "departamento": "MINISTERIO DE EDUCACIÓN, CULTURA Y DEPORTE"
+ },
+ "jorge luis vega valle": {
+  "puesto": "INSTITUTO NAC. ESTADISTICA (INE), O.A. D.G. DE ESTADISTICAS DE LA POBLACION S.G. DE ESTADISTICAS DEMOGRAFICAS SUBDIRECTOR/SUBDIRECTORA GENERAL",
+  "fecha": "2025-01-17",
+  "boe": "BOE-A-2025-1231",
+  "rango": "Resolución",
+  "mecanismo": "Libre designación (literal)",
+  "condicion": "C. SUPERIOR DE ESTADISTICOS DEL ESTADO",
+  "departamento": "MINISTERIO DE ECONOMÍA, COMERCIO Y EMPRESA"
+ },
+ "francisco javier gonzalez matesanz": {
+  "puesto": "Subdirector General — Subdirección General de Geodesia y Cartografía",
+  "fecha": "2018-01-17",
+  "boe": "BOE-A-2018-810",
+  "rango": "Resolución",
+  "mecanismo": "Libre designación (literal)",
+  "condicion": "Ingenieros Geógrafos.",
+  "departamento": "MINISTERIO DE FOMENTO"
+ },
+ "jose antonio lopez fernandez": {
+  "puesto": "",
+  "fecha": "2026-04-14",
+  "boe": "BOE-A-2026-8704",
+  "rango": "Orden",
+  "mecanismo": "",
+  "condicion": "",
+  "departamento": "MINISTERIO DE EDUCACIÓN, FORMACIÓN PROFESIONAL Y DEPORTES"
+ },
+ "ana isabel rojo hernandez": {
+  "puesto": "SUBDIRECTOR / SUBDIRECTORA GENERAL. Código de Puesto:",
+  "fecha": "2018-01-23",
+  "boe": "BOE-A-2018-992",
+  "rango": "Resolución",
+  "mecanismo": "Libre designación (literal)",
+  "condicion": "1603",
+  "departamento": "MINISTERIO DE HACIENDA Y FUNCIÓN PÚBLICA"
+ },
+ "jose aranda vasserot": {
+  "puesto": "Capitán Marítimo",
+  "fecha": "2018-02-26",
+  "boe": "BOE-A-2018-2921",
+  "rango": "Resolución",
+  "mecanismo": "Libre designación (literal)",
+  "condicion": "Ingenieros Navales",
+  "departamento": "MINISTERIO DE FOMENTO"
+ },
+ "magdalena valerio cordero": {
+  "puesto": "Consejera permanente de Estado y Presidenta de la Sección Segunda del Consejo de Estado",
+  "fecha": "2025-03-04",
+  "boe": "BOE-A-2025-4326",
+  "rango": "Real Decreto",
+  "mecanismo": "Real decreto",
+  "condicion": "",
+  "departamento": "PRESIDENCIA DEL GOBIERNO"
+ },
+ "alfonso rodriguez de celis": {
+  "puesto": "Delegado del Gobierno en la Comunidad Autónoma de Andalucía",
+  "fecha": "2018-06-18",
+  "boe": "BOE-A-2018-8196",
+  "rango": "Real Decreto",
+  "mecanismo": "Real decreto",
+  "condicion": "",
+  "departamento": "PRESIDENCIA DEL GOBIERNO"
+ },
+ "isaura leal fernandez": {
+  "puesto": "Comisionada del Gobierno frente",
+  "fecha": "2018-06-29",
+  "boe": "BOE-A-2018-9120",
+  "rango": "Real Decreto",
+  "mecanismo": "Real decreto",
+  "condicion": "",
+  "departamento": "MINISTERIO DE POLÍTICA TERRITORIAL Y FUNCIÓN PÚBLICA"
  },
  "patricia aparicio gonzalez": {
   "puesto": "Directora del Gabinete del Director General de la Agencia Estatal de Administración Tributaria",
@@ -80,15 +233,6 @@
   "condicion": "",
   "departamento": "MINISTERIO PARA LA TRANSICIÓN ECOLÓGICA Y EL RETO DEMOGRÁFICO"
  },
- "vacante": {
-  "puesto": "DEPARTAMENTO DE INFORMATICA TRIBUTARIA. S.G.DE TECNOLOGIAS ANAL.INF.E INV.FRAUDE. JEFE/A SERVICIO ESPECIAL INFORMATICA. MADRID",
-  "fecha": "2026-07-14",
-  "boe": "BOE-A-2026-15747",
-  "rango": "Resolución",
-  "mecanismo": "Libre designación (literal)",
-  "condicion": "",
-  "departamento": "MINISTERIO DE HACIENDA"
- },
  "manuel olleros lledo": {
   "puesto": "VOCAL ASESOR/ VOCAL ASESORA. Código de puesto:",
   "fecha": "2021-12-28",
@@ -106,24 +250,6 @@
   "mecanismo": "Libre designación (literal)",
   "condicion": "0011",
   "departamento": "MINISTERIO DE HACIENDA"
- },
- "cristobal cremades rodriguez": {
-  "puesto": "Jefe/Jefa Provincial",
-  "fecha": "2021-02-01",
-  "boe": "BOE-A-2021-1629",
-  "rango": "Resolución",
-  "mecanismo": "Libre designación (literal)",
-  "condicion": "E. Superior de Técnicos de Tráfico.",
-  "departamento": "MINISTERIO DEL INTERIOR"
- },
- "jorge luis vega valle": {
-  "puesto": "INSTITUTO NAC. ESTADISTICA (INE), O.A. D.G. DE ESTADISTICAS DE LA POBLACION S.G. DE ESTADISTICAS DEMOGRAFICAS SUBDIRECTOR/SUBDIRECTORA GENERAL",
-  "fecha": "2025-01-17",
-  "boe": "BOE-A-2025-1231",
-  "rango": "Resolución",
-  "mecanismo": "Libre designación (literal)",
-  "condicion": "C. SUPERIOR DE ESTADISTICOS DEL ESTADO",
-  "departamento": "MINISTERIO DE ECONOMÍA, COMERCIO Y EMPRESA"
  },
  "eva santisteban provencio": {
   "puesto": "",
@@ -177,15 +303,6 @@
   "rango": "Resolución",
   "mecanismo": "",
   "condicion": "",
-  "departamento": "MINISTERIO DE HACIENDA Y FUNCIÓN PÚBLICA"
- },
- "maria elena alonso ventura": {
-  "puesto": "MUT. GRAL. FUNC. CIVILES DEL E. -MUFACE-. UNIDAD DE APOYO. JEFE/JEFA DE OFICINA DEL PARTICIPE",
-  "fecha": "2022-04-01",
-  "boe": "BOE-A-2022-5598",
-  "rango": "Resolución",
-  "mecanismo": "Libre designación (literal)",
-  "condicion": "C. SUP. ADMINISTRADORES CIVILES DEL EST.",
   "departamento": "MINISTERIO DE HACIENDA Y FUNCIÓN PÚBLICA"
  },
  "cristina yunta bernal": {
@@ -269,6 +386,15 @@
   "condicion": "A0313",
   "departamento": "MINISTERIO DE CIENCIA E INNOVACIÓN"
  },
+ "luis carlos sanchez garcia": {
+  "puesto": "",
+  "fecha": "2026-06-08",
+  "boe": "BOE-A-2026-12805",
+  "rango": "Orden",
+  "mecanismo": "Concurso (literal)",
+  "condicion": "",
+  "departamento": "MINISTERIO DE EDUCACIÓN, FORMACIÓN PROFESIONAL Y DEPORTES"
+ },
  "ana maria munoz alfaro": {
   "puesto": "S. DE E. DE FUNCIÓN PÚBLICA. D.G. DE LA FUNCIÓN PÚBLICA. S.G. DE PLANIFICACIÓN DE RECURSOS HUMANOS Y RETRIBUCIONES. COORDINADOR/COORDINADORA DE ÁREA (5588239). MADRID/MADRID",
   "fecha": "2026-03-23",
@@ -314,15 +440,6 @@
   "condicion": "",
   "departamento": "MINISTERIO PARA LA TRANSFORMACIÓN DIGITAL Y DE LA FUNCIÓN PÚBLICA"
  },
- "jose antonio lopez fernandez": {
-  "puesto": "",
-  "fecha": "2026-04-14",
-  "boe": "BOE-A-2026-8704",
-  "rango": "Orden",
-  "mecanismo": "",
-  "condicion": "",
-  "departamento": "MINISTERIO DE EDUCACIÓN, FORMACIÓN PROFESIONAL Y DEPORTES"
- },
  "mario gomez llorente": {
   "puesto": "",
   "fecha": "2024-09-30",
@@ -341,6 +458,15 @@
   "condicion": "",
   "departamento": "MINISTERIO PARA LA TRANSFORMACIÓN DIGITAL Y DE LA FUNCIÓN PÚBLICA"
  },
+ "juan francisco martinez rodriguez": {
+  "puesto": "",
+  "fecha": "2026-06-15",
+  "boe": "BOE-A-2026-13119",
+  "rango": "Resolución",
+  "mecanismo": "",
+  "condicion": "",
+  "departamento": "MINISTERIO PARA LA TRANSFORMACIÓN DIGITAL Y DE LA FUNCIÓN PÚBLICA"
+ },
  "maria francisca patilla carmona": {
   "puesto": "DIRECCIÓN DE LA AESA. DIRECCIÓN DE GESTIÓN DE LA SEGURIDAD Y PERSONAL DE VUELO. JEFE/JEFA DE DIVISIÓN (5009467). MADRID/MADRID",
   "fecha": "2025-07-11",
@@ -349,6 +475,15 @@
   "mecanismo": "Libre designación (literal)",
   "condicion": "C. INGENIEROS AERONÁUTICOS.",
   "departamento": "MINISTERIO DE TRANSPORTES Y MOVILIDAD SOSTENIBLE"
+ },
+ "arantzazu de los reyes delgado": {
+  "puesto": "",
+  "fecha": "2025-10-06",
+  "boe": "BOE-A-2025-20212",
+  "rango": "Orden",
+  "mecanismo": "Libre designación (literal)",
+  "condicion": "",
+  "departamento": "MINISTERIO DE LA PRESIDENCIA, JUSTICIA Y RELACIONES CON LAS CORTES"
  },
  "dolores gonzalez aguilar": {
   "puesto": "",
@@ -367,6 +502,15 @@
   "mecanismo": "Libre designación (literal)",
   "condicion": "E. MEDICOS-INSP. C. INSP. SANIT. ADMON. S.S.",
   "departamento": "MINISTERIO DE INCLUSIÓN, SEGURIDAD SOCIAL Y MIGRACIONES"
+ },
+ "araceli rojo lopez desde la modificacion de antes ana maria gimeno martinez": {
+  "puesto": "",
+  "fecha": "2026-06-08",
+  "boe": "BOE-A-2026-12805",
+  "rango": "Orden",
+  "mecanismo": "Concurso (literal)",
+  "condicion": "",
+  "departamento": "MINISTERIO DE EDUCACIÓN, FORMACIÓN PROFESIONAL Y DEPORTES"
  },
  "eduardo euba aldape": {
   "puesto": "S. DE E. DE COMERCIO. D.G. INTELIGENCIA ECONOMICA Y COMERCIAL. S.G. DE PAISES MEDITERRANEOS, AFRICA Y ORIENTE MEDIO. SUBDIRECTOR ADJUNTO/SUBDIRECTORA ADJUNTA (1364804). MADRID / MADRID",
@@ -390,16 +534,6 @@
   "puesto": "",
   "fecha": "2026-02-17",
   "boe": "BOE-A-2026-3821",
-  "rango": "Resolución",
-  "mecanismo": "",
-  "condicion": "",
-  "departamento": "",
-  "origen": "buscador BOE"
- },
- "francisco javier gonzalez matesanz": {
-  "puesto": "",
-  "fecha": "2023-02-14",
-  "boe": "BOE-A-2023-4521",
   "rango": "Resolución",
   "mecanismo": "",
   "condicion": "",
@@ -526,6 +660,136 @@
   "departamento": "",
   "origen": "buscador BOE"
  },
+ "jesus torres martinez": {
+  "puesto": "",
+  "fecha": "2026-06-17",
+  "boe": "BOE-A-2026-13476",
+  "rango": "Resolución",
+  "mecanismo": "",
+  "condicion": "",
+  "departamento": "",
+  "origen": "buscador BOE"
+ },
+ "maria jose fernandez dominguez": {
+  "puesto": "",
+  "fecha": "2026-06-15",
+  "boe": "BOE-A-2026-13119",
+  "rango": "Resolución",
+  "mecanismo": "",
+  "condicion": "",
+  "departamento": "",
+  "origen": "buscador BOE"
+ },
+ "jose maria montero juanes": {
+  "puesto": "Fiscal Superior de la Fiscalía de la Comunidad Autónoma de Extremadura",
+  "fecha": "2026-05-27",
+  "boe": "BOE-A-2026-11481",
+  "rango": "Real Decreto",
+  "mecanismo": "Real decreto",
+  "condicion": "",
+  "departamento": "",
+  "origen": "buscador BOE"
+ },
+ "maria jesus buitrago de benito": {
+  "puesto": "",
+  "fecha": "2026-03-27",
+  "boe": "BOE-A-2026-7716",
+  "rango": "Resolución",
+  "mecanismo": "",
+  "condicion": "",
+  "departamento": "",
+  "origen": "buscador BOE"
+ },
+ "juana garcia soto": {
+  "puesto": "",
+  "fecha": "2026-07-08",
+  "boe": "BOE-A-2026-15217",
+  "rango": "Resolución",
+  "mecanismo": "",
+  "condicion": "",
+  "departamento": "",
+  "origen": "buscador BOE"
+ },
+ "manuel sueiras pascual": {
+  "puesto": "",
+  "fecha": "2022-05-31",
+  "boe": "BOE-A-2022-9033",
+  "rango": "Resolución",
+  "mecanismo": "",
+  "condicion": "",
+  "departamento": "",
+  "origen": "buscador BOE"
+ },
+ "ana maria martin cardaba": {
+  "puesto": "",
+  "fecha": "2024-12-19",
+  "boe": "BOE-A-2024-26964",
+  "rango": "Resolución",
+  "mecanismo": "",
+  "condicion": "",
+  "departamento": "",
+  "origen": "buscador BOE"
+ },
+ "fernando clemente de antonio": {
+  "puesto": "",
+  "fecha": "2026-03-27",
+  "boe": "BOE-A-2026-7716",
+  "rango": "Resolución",
+  "mecanismo": "",
+  "condicion": "",
+  "departamento": "",
+  "origen": "buscador BOE"
+ },
+ "maria luisa perez soto": {
+  "puesto": "",
+  "fecha": "2026-02-02",
+  "boe": "BOE-A-2026-2568",
+  "rango": "Resolución",
+  "mecanismo": "",
+  "condicion": "",
+  "departamento": "",
+  "origen": "buscador BOE"
+ },
+ "juan jose nieto montero": {
+  "puesto": "",
+  "fecha": "2025-10-30",
+  "boe": "BOE-A-2025-22688",
+  "rango": "Resolución",
+  "mecanismo": "",
+  "condicion": "Catedráticas y Catedráticos de Universidad.",
+  "departamento": "",
+  "origen": "buscador BOE"
+ },
+ "jose ramon baeza perez": {
+  "puesto": "",
+  "fecha": "2026-07-07",
+  "boe": "BOE-A-2026-15474",
+  "rango": "Resolución",
+  "mecanismo": "",
+  "condicion": "",
+  "departamento": "",
+  "origen": "buscador BOE"
+ },
+ "fernando garcia solano": {
+  "puesto": "",
+  "fecha": "2026-06-15",
+  "boe": "BOE-A-2026-13119",
+  "rango": "Resolución",
+  "mecanismo": "",
+  "condicion": "",
+  "departamento": "",
+  "origen": "buscador BOE"
+ },
+ "virginia marin fernandez": {
+  "puesto": "",
+  "fecha": "2025-10-10",
+  "boe": "BOE-A-2025-20600",
+  "rango": "Resolución",
+  "mecanismo": "",
+  "condicion": "",
+  "departamento": "",
+  "origen": "buscador BOE"
+ },
  "jesus antonio rico garcia": {
   "puesto": "",
   "fecha": "2025-05-19",
@@ -550,6 +814,56 @@
   "puesto": "",
   "fecha": "2020-02-18",
   "boe": "BOE-A-2020-2581",
+  "rango": "Resolución",
+  "mecanismo": "",
+  "condicion": "",
+  "departamento": "",
+  "origen": "buscador BOE"
+ },
+ "maria jose gonzalez hernandez": {
+  "puesto": "",
+  "fecha": "2026-09-11",
+  "boe": "BOE-A-2026-19338",
+  "rango": "Resolución",
+  "mecanismo": "",
+  "condicion": "",
+  "departamento": "",
+  "origen": "buscador BOE"
+ },
+ "ana maria gimeno martinez desde la modificacion de antes araceli rojo lopez": {
+  "puesto": "Fiscal Delegado de la Jurisdicción Civil incluida la protección de personas con discapacidad y mayores en la Fiscalía Provincial de Ávila",
+  "fecha": "2024-12-27",
+  "boe": "BOE-A-2025-552",
+  "rango": "Decreto",
+  "mecanismo": "",
+  "condicion": "",
+  "departamento": "",
+  "origen": "buscador BOE"
+ },
+ "ivan hernandez lopez": {
+  "puesto": "",
+  "fecha": "2026-07-08",
+  "boe": "BOE-A-2026-15218",
+  "rango": "Resolución",
+  "mecanismo": "",
+  "condicion": "",
+  "departamento": "",
+  "origen": "buscador BOE"
+ },
+ "ana maria linacero de la fuente": {
+  "puesto": "",
+  "fecha": "2026-08-13",
+  "boe": "BOE-A-2026-17728",
+  "rango": "Resolución",
+  "mecanismo": "",
+  "condicion": "",
+  "departamento": "",
+  "origen": "buscador BOE"
+ },
+ "domingo campillo gonzalez": {
+  "puesto": "",
+  "fecha": "2021-05-20",
+  "boe": "BOE-A-2021-8553",
   "rango": "Resolución",
   "mecanismo": "",
   "condicion": "",
@@ -586,43 +900,13 @@
   "departamento": "",
   "origen": "buscador BOE"
  },
- "aranzazu lafuente urien": {
-  "puesto": "Director/Directora del Archivo Sección Nobleza",
-  "fecha": "2016-02-10",
-  "boe": "BOE-A-2016-1887",
-  "rango": "Resolución",
-  "mecanismo": "Libre designación (literal)",
-  "condicion": "Cuerpo Facultativo de Archiveros, Bibliotecarios y Arqueólogos",
-  "departamento": "",
-  "origen": "buscador BOE (3.ª pasada)"
- },
- "jose aranda vasserot": {
-  "puesto": "Capitán Marítimo",
-  "fecha": "2018-02-26",
-  "boe": "BOE-A-2018-2921",
-  "rango": "Resolución",
-  "mecanismo": "Libre designación (literal)",
-  "condicion": "Ingenieros Navales",
-  "departamento": "",
-  "origen": "buscador BOE (3.ª pasada)"
- },
- "juan diaz rokiski": {
-  "puesto": "Director/Directora Territorial Inspección de Trabajo y Seguridad Social de la Dirección Territorial Inspección de Trabajo y Seguridad Social de Castilla-La Mancha",
-  "fecha": "2012-09-03",
-  "boe": "BOE-A-2012-11571",
+ "carmen toscano ramiro": {
+  "puesto": "Secretaría General para la Administración Pública, Instituto Nacional de Administración Pública, Centro de Estudios Locales y Territoriales, Subdirectora General Adjunta",
+  "fecha": "2007-05-28",
+  "boe": "BOE-A-2007-11602",
   "rango": "Orden",
   "mecanismo": "Libre designación (literal)",
-  "condicion": "",
-  "departamento": "",
-  "origen": "buscador BOE (3.ª pasada)"
- },
- "ana isabel rojo hernandez": {
-  "puesto": "SUBDIRECTOR / SUBDIRECTORA GENERAL. Código de Puesto:",
-  "fecha": "2018-01-23",
-  "boe": "BOE-A-2018-992",
-  "rango": "Resolución",
-  "mecanismo": "Libre designación (literal)",
-  "condicion": "1603",
+  "condicion": "A3012",
   "departamento": "",
   "origen": "buscador BOE (3.ª pasada)"
  }

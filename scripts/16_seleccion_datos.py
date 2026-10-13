@@ -173,11 +173,60 @@ def ambito(r):
     if re.search(r"(?i)polic", a) or re.search(r"(?i)polic[ií]a nacional", c): return "Policía Nacional"
     if a.startswith("Armed"): return "Fuerzas Armadas"
     if a == "AGE": return "Administración General del Estado"
-    return None
+    if a.startswith("Regional"): return "Autonómico"
+    if re.search(r"(?i)justice|judicial|fiscal|forens|procesal|auxilio|letrados de la administraci", a + " " + c): return "Justicia"
+    if re.search(r"(?i)cortes|parliament|tribunal de cuentas|consejo de estado|constitucional", a + " " + c): return "Cortes y órganos constitucionales"
+    if re.search(r"(?i)notar|registrador", c): return "Justicia"
+    if re.search(r"(?i)universit", a): return "Universidades"
+    if re.search(r"(?i)local|national selection", a): return "Habilitación y entidades locales"
+    if re.search(r"(?i)education", a): return "Administración General del Estado"
+    return "Otros"
+CADENA = {}
+for f in glob.glob(os.path.join(B, "seleccion/cadena_*.jsonl")):
+    for c in jl(f): CADENA[nn(c["cuerpo"])] = c
+ESTATAL = {"Administración General del Estado", "Fuerzas Armadas", "Guardia Civil", "Policía Nacional"}
+
+
+def nodo_cadena(obj, rol):
+    """Nodo a partir de un eslabón documentado por agente; si la persona está en el censo, se usa su ficha."""
+    if not obj or not obj.get("titular"): return None
+    n = ficha(obj["titular"], rol, obj.get("organo", ""), fuente=obj.get("fuente", ""))
+    if not n.get("en_censo"):
+        n.update(puesto=obj.get("cargo", ""), desde=obj.get("desde", ""), boe=obj.get("acto", ""), nombrado_por=obj.get("nombrado_por", ""),
+                 gobierno_que_nombra=obj.get("gobierno_que_nombra", ""))
+    return n
+
+
 out = []
 for r in data:
     amb = ambito(r)
     if not amb: continue
+    if amb not in ESTATAL:
+        s_ = lambda i: ("" if r[i] in (None, "None") else str(r[i]))
+        cad = CADENA.get(nn(s_(0)), {})
+        nodos = [x for x in (nodo_cadena(cad.get("convoca"), "Convoca y aprueba el temario"),
+                             (nodo_cadena(dict(titular=cad["tribunal"].get("presidente"), organo=f"Tribunal ({cad['tribunal'].get('fecha','')})", fuente=cad["tribunal"].get("fuente", "")), "Preside el tribunal") if cad.get("tribunal") and cad["tribunal"].get("presidente") else None),
+                             nodo_cadena(cad.get("formacion"), "Dirige la formación"),
+                             nodo_cadena(cad.get("dirige_cuerpo"), "Dirige el cuerpo u órgano gestor")) if x]
+        for n in nodos:
+            if n["rol"] == "Preside el tribunal" and cad.get("tribunal"):
+                t = cad["tribunal"]; n["cuerpo_literal"] = t.get("cuerpo_presidente", ""); n["nombrado_tribunal_por"] = ", ".join(x for x in (t.get("organo_que_nombra", ""), t.get("firmante", "")) if x)
+            if amb == "Autonómico":  # las marcas de etapa estatal no aplican a nombramientos autonómicos
+                n["con_zp"] = n["con_s"] = False; n["gob"] = ""
+                n["cargos_zp"] = []; n["cargos_s"] = []
+                if n.pop("ultimo", None):  # una coincidencia en el BOE estatal puede ser un homónimo
+                    for k_ in ("ultimo_puesto", "boe", "nombrado_por", "desde"): n.pop(k_, None)
+        ind = []
+        if any(n.get("en_censo") and n["rol"] == "Preside el tribunal" for n in nodos): ind.append("trib_cargo")
+        if any(n.get("pa") for n in nodos): ind.append("partido")
+        if any(n.get("con_s") for n in nodos): ind.append("nombr_actual")
+        if any(n.get("con_zp") for n in nodos): ind.append("con_zp")
+        if any(n.get("con_zp") and n.get("con_s") for n in nodos): ind.append("zp_y_s")
+        out.append(dict(cuerpo=s_(0), grupo=s_(1), ambito=amb, comunidad=(cad.get("comunidad") or s_(2).replace("Regional: ", "") if amb == "Autonómico" else ""),
+                        codigo=s_(3), gestiona=s_(4), convoca=s_(6), temario=s_(7), nombra_tribunal=s_(9), examen=s_(10)[:400], formacion=s_(12),
+                        imparte=s_(13), dirige_formacion=s_(14), aviso=s_(15), fuente=s_(17), caveat=s_(20)[:300], ministerio="",
+                        tribunal=cad.get("tribunal"), nodos=nodos, ind=ind, notas=cad.get("notas", "")[:400]))
+        continue
     s = lambda i: ("" if r[i] in (None, "None") else str(r[i]))
     conv = convocante(s(6))
     nodos = []

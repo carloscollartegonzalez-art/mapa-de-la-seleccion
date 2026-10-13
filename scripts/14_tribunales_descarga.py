@@ -15,7 +15,8 @@ for f in sorted(glob.glob(os.path.join(B, "datos/boe_cache/sumarios/202[3-6]*.js
     for ctx, it in ns["_walk"](d, {}):
         if ctx.get("seccion") != "2B": continue
         dep = ctx.get("departamento", "")
-        if ns["EXCL_DEP"].search(dep): continue
+        # aquí sí entran Cortes, CGPJ, Tribunal Constitucional y Ministerio Fiscal (órganos que seleccionan cuerpos propios)
+        if re.search(r"UNIVERSIDAD|COMUNIDAD|COMUNITAT|ADMINISTRACI[ÓO]N LOCAL|CIUDAD DE|JUNTA ELECTORAL", dep): continue
         t = it["titulo"]
         tipo = "tribunal" if TRIB.search(t) else "convocatoria" if CONV.search(t) else ""
         if not tipo: continue
