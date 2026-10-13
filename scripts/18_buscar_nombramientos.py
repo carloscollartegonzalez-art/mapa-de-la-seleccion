@@ -9,7 +9,9 @@ def nn(s):
     s = re.sub(r"\b(m|ma)\b", "maria", s)
     return " ".join(re.sub(r"[^a-z ]", " ", s).split())
 D = json.load(open(os.path.join(B, "seleccion/seleccion.json")))["cuerpos"]
-objetivo = {nn(n["nombre"]): n["nombre"] for c in D for n in c["nodos"] if not n.get("nombrado_por")}
+# Personas sin «quién le nombró» o cuyo dato sale de esta misma búsqueda (para no perderlo al relanzar)
+objetivo = {nn(n["nombre"]): n["nombre"] for c in D for n in c["nodos"] if not n.get("nombrado_por") or n.get("ultimo")}
+PREVIO = os.path.join(B, "seleccion/nombramientos_personas.json")
 # índice por apellidos para tolerar nombres compuestos abreviados
 por_ap = {}
 for k in objetivo:
@@ -76,3 +78,35 @@ for k in pend:
     time.sleep(1)
 json.dump(res, open(os.path.join(B, "seleccion/nombramientos_personas.json"), "w"), ensure_ascii=False, indent=1)
 print("tras buscador BOE: encontradas", len(res), "de", len(objetivo))
+
+# ---------- Tercera pasada: nombre completo y concursos ----------
+def variantes(nombre):
+    n = re.sub(r"(?i)^(coronel|teniente coronel|comandante|general|don|doña)\s+(don|doña)?\s*", "", nombre).strip()
+    t = n.split()
+    vs = [n]
+    if len(t) >= 3: vs += [" ".join(t[-2:]), f"{' '.join(t[-2:])}, {' '.join(t[:-2])}"]
+    return list(dict.fromkeys(vs))
+pend = [k for k in objetivo if k not in res]
+for k in pend:
+    nombre = objetivo[k]; t = nn(nombre).split()
+    for frase in variantes(nombre):
+        hecho = False
+        for bid, titulo in buscar(frase):
+            if re.search(r"(?i)convoca(?!toria de libre)|aprobad|admitid|excluid|aspirantes|tribunal|jubila|corrige|correcci", titulo): continue
+            if not re.search(r"(?i)nombra|libre designaci|adjudica|destino|designa|concurso|resuelve", titulo): continue
+            f = os.path.join(B, "datos/boe_cache/xml", bid + ".xml")
+            if not os.path.exists(f):
+                r = S.get(f"https://www.boe.es/diario_boe/xml.php?id={bid}", timeout=30); time.sleep(0.5)
+                if r.status_code != 200: continue
+                open(f, "wb").write(r.content)
+            evs = ext.procesar({"id": bid, "fecha_pub": "", "departamento": "", "titulo": ""})
+            hit = next((e for e in evs if nn(e["nombre"]) == k or (len(t) >= 3 and nn(e["nombre"]).split()[-2:] == t[-2:])), None)
+            if hit:
+                res[k] = dict(puesto=(hit.get("puesto_completo") or hit["puesto"])[:200], fecha=hit["fecha_disp"], boe=bid, rango=hit.get("rango", ""),
+                              mecanismo=hit.get("mecanismo_literal", "") or ("Concurso (literal)" if "concurso" in titulo.lower() else ""),
+                              condicion=hit.get("condicion_literal", ""), departamento="", origen="buscador BOE (3.ª pasada)")
+                hecho = True; break
+        time.sleep(1)
+        if hecho: break
+json.dump(res, open(os.path.join(B, "seleccion/nombramientos_personas.json"), "w"), ensure_ascii=False, indent=1)
+print("tras 3.ª pasada: encontradas", len(res), "de", len(objetivo))

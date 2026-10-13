@@ -80,7 +80,9 @@ html = """<meta charset="utf-8">
       <div class="lg-col">
         <h3>&nbsp;</h3>
         <p><span class="bd ip">Partido en la cadena</span> Alguien de la cadena tiene un vínculo de partido público y con fuente.</p>
-        <p><span class="bd ig">Nombrado con Sánchez</span> Algún responsable de la cadena fue nombrado en el periodo 2018-2026.</p>
+        <p><span class="bd ig">Nombrado con Sánchez</span> Alguien de la cadena tiene nombramientos publicados en el BOE desde junio de 2018.</p>
+        <p><span class="bd zpd">Nombrado con ZP</span> Alguien de la cadena tuvo nombramientos publicados con Zapatero (2004-2011).</p>
+        <p><span class="bd zpa">Con ZP y con Sánchez</span> La misma persona tiene nombramientos en las dos etapas. Coincidencia por nombre en el BOE: para quien no está en el censo es una pista, no una identidad confirmada. Una misma persona puede marcar muchos cuerpos (por ejemplo, la Subsecretaría de Defensa convoca los 30 cuerpos militares).</p>
         <p><span class="pill Sin">No publicado</span> El dato no aparece en el BOE ni en la web oficial consultada.</p>
       </div>
     </div>
@@ -119,7 +121,7 @@ html = """<meta charset="utf-8">
   const norm = s => String(s||'').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase();
   const fmt = d => d ? d.split('-').reverse().join('/') : '';
   const shortMin = m => (m||'').replace(/^Ministerio (de la |del |de |para la )?/,'');
-  const IND = [['trib_alto','Tribunal: alto cargo','ia'],['trib_cargo','Tribunal: cargo directivo','ic'],['repite','Repite presidencia','ir'],['partido','Partido en la cadena','ip'],['nombr_actual','Nombrado con Sánchez','ig']];
+  const IND = [['trib_alto','Tribunal: alto cargo','ia'],['trib_cargo','Tribunal: cargo directivo','ic'],['repite','Repite presidencia','ir'],['partido','Partido en la cadena','ip'],['nombr_actual','Nombrado con Sánchez','ig'],['con_zp','Nombrado con ZP','ig'],['zp_y_s','Con ZP y con Sánchez','ip']];
   const st = {q:'', amb:'', gr:'', min:'', ind:new Set()};
   const opts = (sel, vals, all) => { sel.innerHTML = `<option value="">${all}</option>` + vals.map(v=>`<option value="${esc(v)}">${esc(v)}</option>`).join(''); };
   opts($('#fAmb'), [...new Set(D.map(c=>c.ambito))], 'Todos');
@@ -140,7 +142,10 @@ html = """<meta charset="utf-8">
     const b=[];
     if (n.pa) b.push(`<span class="bd par" title="${esc(n.pa)}">Partido</span>`);
     if (n.jud) b.push(`<span class="bd jud">Judicial${n.jud==='prensa'?' <span class="ded">· prensa</span>':''}</span>`);
-    if (n.zpa) b.push('<span class="bd zpa">ZP y Sánchez</span>');
+    const lista = L => (L||[]).map(x=>`${fmt(x.fecha)} ${x.puesto}`).join(' · ');
+    if (n.con_zp && n.con_s) b.push(`<span class="bd zpa" title="${esc(lista(n.cargos_zp))}">Con ZP y con Sánchez</span>`);
+    else if (n.con_zp) b.push(`<span class="bd zpd" title="${esc(lista(n.cargos_zp))}">Nombrado con ZP</span>`);
+    else if (n.con_s) b.push(`<span class="bd ig" title="${esc(lista(n.cargos_s))}">Nombrado con Sánchez</span>`);
     if (n.cese==='Libre') b.push('<span class="pill Libre">Cese libre</span>');
     if (n.presidencias>1) b.push(`<span class="bd ir">Preside ${n.presidencias} tribunales</span>`);
     return b.join(' ');
@@ -158,12 +163,13 @@ html = """<meta charset="utf-8">
       ${n.ultimo?`<div class="by">${n.ultimo_puesto?`Último nombramiento publicado en el BOE: <b>${esc(n.ultimo_puesto)}</b>`:'Último acto de nombramiento publicado en el BOE'}</div>`:''}
       ${(por||cuando)?`<div class="by">${[por,cuando].filter(Boolean).join(' ')}${boe?` · <a class="mono" href="https://www.boe.es/diario_boe/txt.php?id=${boe[0]}" target="_blank" rel="noopener">${boe[0]}</a>`:''}</div>`:''}
       ${trib}
+      ${(n.cargos_zp&&n.cargos_zp.length)?`<div class="by">Con ZP: ${esc(n.cargos_zp.map(x=>x.puesto+' ('+x.fecha.slice(0,4)+')').join(' · '))}</div>`:''}
       <div class="fl">${marcas(n)} ${link(n.fuente,'fuente')}</div></div></div>`;
   }
   function render(){
     const R = D.filter(match);
     const cnt = k => R.filter(c=>c.ind.includes(k)).length;
-    $('#sum').innerHTML = [[R.length,'cuerpos'],[R.filter(c=>c.nodos.some(n=>n.rol==='Preside el tribunal')).length,'con presidente de tribunal identificado'],[cnt('trib_alto')+cnt('trib_cargo')-R.filter(c=>c.ind.includes('trib_alto')&&c.ind.includes('trib_cargo')).length,'tribunales presididos por un cargo del censo'],[cnt('repite'),'con presidencia repetida'],[cnt('partido'),'con partido en la cadena']].map(([v,t])=>`<span><b>${v}</b>${t}</span>`).join('');
+    $('#sum').innerHTML = [[R.length,'cuerpos'],[R.filter(c=>c.nodos.some(n=>n.rol==='Preside el tribunal')).length,'con presidente de tribunal identificado'],[cnt('trib_alto')+cnt('trib_cargo')-R.filter(c=>c.ind.includes('trib_alto')&&c.ind.includes('trib_cargo')).length,'tribunales presididos por un cargo del censo'],[cnt('repite'),'con presidencia repetida'],[cnt('partido'),'con partido en la cadena'],[new Set(R.flatMap(c=>c.nodos.filter(n=>n.con_zp&&n.con_s).map(n=>n.nombre))).size,'personas con ZP y con Sánchez']].map(([v,t])=>`<span><b>${v}</b>${t}</span>`).join('');
     $('#cards').innerHTML = R.length ? R.map(c=>{
       const by = r => c.nodos.find(n=>n.rol===r);
       const ind = c.ind.filter(k=>k!=='nombr_actual').map(k=>{ const i=IND.find(x=>x[0]===k); return `<span class="bd ${i[2]}">${i[1]}</span>`; }).join(' ');

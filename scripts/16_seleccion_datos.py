@@ -74,6 +74,7 @@ def nombrado_por(boe):
     return res
 
 
+ETAPAS = json.load(open(os.path.join(B, "seleccion/etapas_personas.json"))) if os.path.exists(os.path.join(B, "seleccion/etapas_personas.json")) else {}
 ULTIMO = json.load(open(os.path.join(B, "seleccion/nombramientos_personas.json"))) if os.path.exists(os.path.join(B, "seleccion/nombramientos_personas.json")) else {}
 
 
@@ -86,6 +87,10 @@ def ficha(nombre, rol, organo="", fuente="", extra=None):
         n.update(puesto=p["p"], ministerio=p["m"], desde=p["d"], gob=gobierno(p["d"]), cese=p["c"], boe=p["boe"],
                  nombrado_por=nombrado_por(p["boe"]), pa=p["pa"], jud=p["jud"], zpa=p["zpa"], zpd=p["zpd"])
     if extra: n.update(extra)
+    et = ETAPAS.get(nn(re.sub(r"(?i)^(coronel|teniente coronel|general)\s+(don|doña)?\s*", "", nombre)), {})
+    n["cargos_zp"] = et.get("zp", []); n["cargos_s"] = et.get("sanchez", [])
+    n["con_zp"] = bool(n["cargos_zp"]) or bool(p and (p.get("zpa") or p.get("zpd")))
+    n["con_s"] = bool(n["cargos_s"]) or n.get("gob") == "Sánchez"
     if not p and not n.get("nombrado_por"):
         u = ULTIMO.get(nn(nombre))
         if u:
@@ -199,7 +204,12 @@ for r in data:
     if any(n.get("cese") == "Libre" and n["rol"] == "Preside el tribunal" for n in nodos): ind.append("trib_alto")
     if any(n.get("en_censo") and n["rol"] == "Preside el tribunal" for n in nodos): ind.append("trib_cargo")
     if any(n.get("pa") for n in nodos): ind.append("partido")
-    if any(n.get("gob") == "Sánchez" for n in nodos): ind.append("nombr_actual")
+    for n in nodos:  # completar con la fecha del nombramiento actual
+        if n.get("gob") == "Sánchez": n["con_s"] = True
+        if n.get("gob") == "Zapatero": n["con_zp"] = True
+    if any(n.get("con_s") for n in nodos): ind.append("nombr_actual")
+    if any(n.get("con_zp") for n in nodos): ind.append("con_zp")
+    if any(n.get("con_zp") and n.get("con_s") for n in nodos): ind.append("zp_y_s")
     if any(n.get("presidencias", 1) > 1 for n in nodos if n["rol"] == "Preside el tribunal"): ind.append("repite")
     out.append(dict(cuerpo=s(0), grupo=s(1), ambito=amb, codigo=s(3), gestiona=s(4), convoca=s(6), temario=s(7), nombra_tribunal=s(9),
                     examen=s(10)[:400], formacion=s(12), imparte=s(13), dirige_formacion=s(14), aviso=s(15), fuente=s(17),
