@@ -71,9 +71,12 @@ def miembros_tabla(root):
     return out
 
 
-sel = [json.loads(l) for l in open(os.path.join(B, "datos/seleccion_2B.jsonl"))]
+import sys
+ENTRADA = sys.argv[1] if len(sys.argv) > 1 else "datos/seleccion_2B.jsonl"
+SALIDA = sys.argv[2] if len(sys.argv) > 2 else "datos/tribunales.jsonl"
+sel = [json.loads(l) for l in open(os.path.join(B, ENTRADA))]
 n = 0
-with open(os.path.join(B, "datos/tribunales.jsonl"), "w") as fh:
+with open(os.path.join(B, SALIDA), "w") as fh:
     for s in sel:
         f = os.path.join(B, "datos/boe_cache/xml", s["id"] + ".xml")
         if not os.path.exists(f): continue

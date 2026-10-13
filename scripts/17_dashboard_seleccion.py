@@ -7,6 +7,13 @@ base = open(os.path.join(B, "dashboard/plantilla.html")).read()
 estilos = re.search(r"<style>(.*?)</style>", base, re.S).group(1)
 logo = "data:image/png;base64," + base64.b64encode(open(os.path.join(B, "dashboard/logo_em.png"), "rb").read()).decode()
 data = json.load(open(os.path.join(B, "seleccion/seleccion.json")))
+_h = os.path.join(B, "seleccion/historico.json")
+if os.path.exists(_h):
+    H = json.load(open(_h))
+    for c in data["cuerpos"]:
+        h = H["cuerpos"].get(c["cuerpo"])
+        if h: c["hist"] = dict(serie=[dict(f=x["fecha"], g=x["gob"], p=x["presidente"]) for x in h["serie"]], cambios=h.get("cambios", {}), rep=h["repetidores"][:3])
+    data["hist_resumen"] = H.get("resumen", {}); data["hist_top"] = H.get("top", [])[:20]
 
 extra = """
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:14px;margin-bottom:24px}
@@ -34,7 +41,19 @@ extra = """
 .card details{border-top:1px solid var(--line);padding:8px 14px;font-size:12.5px;color:var(--muted)}
 .card details summary{cursor:pointer;color:var(--ink);font-weight:600}
 .card details p{margin:6px 0}
-@media (max-width:760px){ .cards{grid-template-columns:1fr} .step{grid-template-columns:1fr} }
+.llave{background:var(--surface);border:1px solid var(--line);border-radius:8px;margin:14px 0 18px}
+.llave > summary{padding:12px 16px;cursor:pointer;list-style:none;display:flex;align-items:baseline;gap:10px}
+.llave > summary::-webkit-details-marker{display:none}
+.llave > summary h2{font-family:var(--serif);font-weight:600;color:var(--ink);font-size:20px;margin:0}
+.llave > summary::after{content:"▾";margin-left:auto;color:var(--muted)}
+.llave:not([open]) > summary::after{transform:rotate(-90deg)}
+.lrow{display:grid;grid-template-columns:44px minmax(0,1.6fr) minmax(0,1.8fr) minmax(0,1.4fr);gap:10px;align-items:center;padding:8px 16px;border-top:1px solid var(--line);cursor:pointer}
+.lrow:hover{background:var(--sunk)}
+.lrow .num{font-family:var(--serif);font-size:22px;color:var(--ink);font-variant-numeric:tabular-nums;text-align:right}
+.lrow .nm{font-weight:600;color:var(--ink)} .lrow .ps{font-size:12.5px;color:var(--muted)}
+.lrow .rl{font-size:12px;color:var(--text)}
+.lrow .bar2{height:6px;background:var(--gold);border-radius:3px;margin-top:4px}
+@media (max-width:760px){ .cards{grid-template-columns:1fr} .step{grid-template-columns:1fr} .lrow{grid-template-columns:40px 1fr} .lrow .rl,.lrow .mk{grid-column:2} }
 """
 
 html = """<meta charset="utf-8">
@@ -63,6 +82,7 @@ html = """<meta charset="utf-8">
       <li>Muestra la cadena de control de cada cuerpo: quién convoca y aprueba el temario, quién preside el tribunal, quién dirige la formación previa al ejercicio y quién nombró a cada uno. Son hechos publicados en el BOE o en webs oficiales.</li>
       <li>No prueba que se seleccione o se promocione a personas afines. Para afirmarlo harían falta otros datos (resultados, composición de tribunales a lo largo del tiempo, valoración de ejercicios). Los indicadores señalan dónde mirar, no conclusiones.</li>
       <li>Los miembros de tribunal son en su mayoría funcionarios de carrera. No se etiqueta su ideología. «Partido» solo aparece cuando la persona ocupa un cargo del censo y lo ha hecho público (candidatura, cargo electo o de partido).</li>
+      <li>Historia de tribunales: convocatorias y nombramientos de tribunal del BOE (sección II.B) desde 2004; los formatos antiguos y los anexos en imagen reducen la cobertura de algunos años (2012 especialmente). Un mismo nombre en años distintos se trata como la misma persona.</li>
       <li>Cobertura: tribunales identificados solo cuando se publican en el BOE o en webs oficiales; muchas convocatorias recientes los publican fuera del BOE. «No publicado» significa pendiente.</li>
       <li>Uso restringido a las personas destinatarias: no publicar ni reenviar.</li>
     </ul>
@@ -86,6 +106,16 @@ html = """<meta charset="utf-8">
         <p><span class="pill Sin">No publicado</span> El dato no aparece en el BOE ni en la web oficial consultada.</p>
       </div>
     </div>
+  </details>
+
+  <details class="llave" id="llave" open>
+    <summary><h2>Quién tiene la llave</h2><span class="hint">personas que controlan 3 o más cuerpos (convocan, presiden el tribunal o dirigen la formación) · pulsa para ver sus cuerpos</span></summary>
+    <div id="llaveList"></div>
+  </details>
+
+  <details class="llave" id="histPanel">
+    <summary><h2>Tribunales 2004-2026</h2><span class="hint">quién ha presidido los tribunales a lo largo del tiempo, según el BOE</span></summary>
+    <div id="histBody" style="padding:4px 16px 14px"></div>
   </details>
 
   <section class="filters" aria-label="Filtros">
@@ -138,7 +168,7 @@ html = """<meta charset="utf-8">
     if (st.min && c.ministerio!==st.min) return false;
     if (st.com && c.comunidad!==st.com) return false;
     for (const k of st.ind) if (!c.ind.includes(k)) return false;
-    if (st.q){ const t=norm(st.q); if (!norm(c.cuerpo+' '+c.nodos.map(n=>n.nombre+' '+(n.puesto||'')).join(' ')).includes(t)) return false; }
+    if (st.q){ const t=norm(st.q); if (!norm(c.cuerpo+' '+c.nodos.map(n=>n.nombre+' '+(n.puesto||'')).join(' ')+' '+(c.hist?c.hist.serie.map(x=>x.p).join(' '):'')).includes(t)) return false; }
     return true;
   }
   function marcas(n){
@@ -184,6 +214,10 @@ html = """<meta charset="utf-8">
           ${paso('Dirige la formación', by('Dirige la formación'), c.imparte?esc(c.imparte):'Sin formación posterior específica')}
           ${by('Dirige el cuerpo u órgano gestor')?paso('Dirige el cuerpo', by('Dirige el cuerpo u órgano gestor'),''):''}
         </div>
+        ${c.hist?`<details><summary>Historia del tribunal (${c.hist.serie.length} convocatorias, ${c.hist.serie[0].f.slice(0,4)}-${c.hist.serie[c.hist.serie.length-1].f.slice(0,4)})</summary>
+          ${Object.entries(c.hist.cambios||{}).map(([g,x])=>`<p><b>Al llegar ${esc(g)}:</b> ${x.mismo?'siguió el mismo presidente':'cambió el presidente'} (${esc(x.antes)}, ${x.fecha_antes.slice(0,4)} → ${esc(x.despues)}, ${x.fecha_despues.slice(0,4)})</p>`).join('')}
+          ${c.hist.serie.map(x=>`<p style="margin:2px 0"><span class="mono">${x.f.slice(0,4)}</span> · ${esc(x.g)} · ${esc(x.p)}</p>`).join('')}
+        </details>`:''}
         <details><summary>Cómo se selecciona y se forma</summary>
           ${c.temario?`<p><b>Temario:</b> ${esc(c.temario)}</p>`:''}
           ${c.nombra_tribunal?`<p><b>Tribunal:</b> ${esc(c.nombra_tribunal).slice(0,400)}</p>`:''}
@@ -204,7 +238,37 @@ html = """<meta charset="utf-8">
   $('#cInd').addEventListener('click', e=>{ const b=e.target.closest('.chip'); if(!b) return; const k=b.dataset.k; st.ind.has(k)?st.ind.delete(k):st.ind.add(k); render(); });
   $('#reset').addEventListener('click', ()=>{ Object.assign(st,{q:'',amb:'',gr:'',min:'',com:''}); st.ind.clear(); ['#q','#fAmb','#fGr','#fMin','#fCom'].forEach(s=>$(s).value=''); render(); });
   $('#ftoggle').addEventListener('click', ()=>{ const f=$('.filters'); const ab=!f.classList.contains('abierto'); f.classList.toggle('abierto', ab); $('#ftoggle').setAttribute('aria-expanded', ab); });
-  if (window.matchMedia('(max-width:760px)').matches){ $('#legend').open=false; $('#aviso').open=false; }
+  const L = JSON.parse(document.getElementById('data').textContent).llave || [];
+  const maxN = L.length ? L[0].n : 1;
+  const ROLES = {'Convoca y aprueba el temario':'convoca','Preside el tribunal':'preside tribunal','Dirige la formación':'dirige formación'};
+  $('#llaveList').innerHTML = L.slice(0,25).map(x=>{
+    const roles = Object.entries(x.roles).map(([r,v])=>`${ROLES[r]||r} ${v}`).join(' · ');
+    const nomb = x.nombrado_por ? `Nombrado por ${esc(x.nombrado_por)}${x.desde?' el '+fmt(x.desde):''}${x.gob?' ('+esc(x.gob)+')':''}${x.gobierno_que_nombra?' (gobierno de '+esc(x.gobierno_que_nombra)+')':''}` : '';
+    const mk = [x.pa?`<span class="bd par" title="${esc(x.pa)}">Partido</span>`:'', (x.con_zp&&x.con_s)?'<span class="bd zpa">Con ZP y con Sánchez</span>':x.con_zp?'<span class="bd zpd">Nombrado con ZP</span>':x.con_s?'<span class="bd ig">Nombrado con Sánchez</span>':'', x.jud?'<span class="bd jud">Judicial</span>':''].join(' ');
+    return `<div class="lrow" data-n="${esc(x.nombre)}" tabindex="0" role="button" aria-label="Ver los cuerpos de ${esc(x.nombre)}">
+      <div class="num">${x.n}</div>
+      <div><div class="nm">${esc(x.nombre)}</div><div class="ps">${esc(x.puesto)}</div><div class="bar2" style="width:${Math.max(6,100*x.n/maxN)}%"></div></div>
+      <div class="rl">${roles}<div class="ps">${nomb}</div></div>
+      <div class="mk">${mk} <span class="ps">${esc(x.ambitos.join(', '))}</span></div></div>`;
+  }).join('');
+  $('#llaveList').addEventListener('click', e=>{ const r=e.target.closest('.lrow'); if(!r) return; st.q=r.dataset.n; $('#q').value=st.q; render(); $('.filters').scrollIntoView({behavior:'smooth'}); });
+  $('#llaveList').addEventListener('keydown', e=>{ if(e.key==='Enter'){ const r=e.target.closest('.lrow'); if(r){ st.q=r.dataset.n; $('#q').value=st.q; render(); } } });
+  const HR = JSON.parse(document.getElementById('data').textContent).hist_resumen || {};
+  const HT = JSON.parse(document.getElementById('data').textContent).hist_top || [];
+  const pct = (a,b) => b ? Math.round(100*a/b)+' %' : '–';
+  $('#histBody').innerHTML = `
+    <p class="hint" style="max-width:95ch">Primera convocatoria de cada cuerpo tras un cambio de Gobierno, comparada con la última anterior. Es una foto de continuidad o relevo en la presidencia del tribunal; el tiempo entre una y otra varía y la rotación también ocurre por causas ordinarias.</p>
+    <div class="sum" style="padding-block:6px">
+      ${HR['Rajoy']?`<span><b>${pct(HR['Rajoy'].cambia,HR['Rajoy'].cuerpos)}</b>cambió el presidente al llegar Rajoy (${HR['Rajoy'].cambia} de ${HR['Rajoy'].cuerpos} cuerpos)</span>`:''}
+      ${HR['Sánchez']?`<span><b>${pct(HR['Sánchez'].cambia,HR['Sánchez'].cuerpos)}</b>cambió el presidente al llegar Sánchez (${HR['Sánchez'].cambia} de ${HR['Sánchez'].cuerpos}; siguió el mismo en ${HR['Sánchez'].sigue})</span>`:''}
+    </div>
+    <h3 style="font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:10px 0 4px">Quienes más tribunales han presidido</h3>
+    ${HT.map(x=>`<div class="lrow" data-n="${esc(x.nombre)}" tabindex="0" role="button"><div class="num">${x.veces}</div>
+      <div><div class="nm">${esc(x.nombre)}</div><div class="ps">${esc(x.cuerpo_pres)}</div></div>
+      <div class="rl">${esc(x.cuerpos.slice(0,4).join(' · '))}${x.cuerpos.length>4?' …':''}</div>
+      <div class="mk"><span class="ps">Etapas: ${esc(x.etapas.join(', '))}</span></div></div>`).join('')}`;
+  $('#histBody').addEventListener('click', e=>{ const r=e.target.closest('.lrow'); if(!r) return; st.q=r.dataset.n; $('#q').value=st.q; render(); $('.filters').scrollIntoView({behavior:'smooth'}); });
+  if (window.matchMedia('(max-width:760px)').matches){ $('#llave').open=false; $('#legend').open=false; $('#aviso').open=false; }
   render();
 })();
 </script>

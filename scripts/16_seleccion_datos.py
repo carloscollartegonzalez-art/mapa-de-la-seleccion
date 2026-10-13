@@ -264,7 +264,22 @@ for r in data:
                     examen=s(10)[:400], formacion=s(12), imparte=s(13), dirige_formacion=s(14), aviso=s(15), fuente=s(17),
                     caveat=s(20)[:300], ministerio=(conv["p"]["m"] if conv["p"] else ""), tribunal=tri, nodos=nodos, ind=ind))
 
-json.dump(dict(generado="13 oct 2026", cuerpos=out), open(os.path.join(B, "seleccion/seleccion.json"), "w"), ensure_ascii=False)
+# ---------- Concentración: cuántos cuerpos controla cada persona ----------
+per = {}
+for o in out:
+    for n in o["nodos"]:
+        if n["rol"] == "Dirige el cuerpo u órgano gestor": continue
+        if re.match(r"(?i)vacante|no identificad|no publicad|sin titular", n["nombre"] or "") or len((n["nombre"] or "").split()) < 2: continue
+        k = nn(n["nombre"])
+        x = per.setdefault(k, dict(nombre=n["nombre"], puesto=n.get("puesto") or n.get("ultimo_puesto") or n.get("organo", ""), desde=n.get("desde", ""),
+                                   gob=n.get("gob", ""), gobierno_que_nombra=n.get("gobierno_que_nombra", ""), nombrado_por=n.get("nombrado_por", ""),
+                                   boe=n.get("boe", ""), pa=n.get("pa", ""), jud=n.get("jud", ""), con_zp=n.get("con_zp", False), con_s=n.get("con_s", False),
+                                   cese=n.get("cese", ""), roles=collections.Counter(), cuerpos=[], ambitos=set()))
+        x["roles"][n["rol"]] += 1; x["cuerpos"].append(o["cuerpo"]); x["ambitos"].add(o["ambito"] + (f" · {o['comunidad']}" if o.get("comunidad") else ""))
+llave = sorted(per.values(), key=lambda x: -len(set(x["cuerpos"])))
+llave = [dict(x, roles=dict(x["roles"]), n=len(set(x["cuerpos"])), cuerpos=sorted(set(x["cuerpos"])), ambitos=sorted(x["ambitos"])) for x in llave if len(set(x["cuerpos"])) >= 3]
+
+json.dump(dict(generado="13 oct 2026", cuerpos=out, llave=llave), open(os.path.join(B, "seleccion/seleccion.json"), "w"), ensure_ascii=False)
 c = collections.Counter()
 for o in out:
     c["cuerpos"] += 1; c["con convocante identificado"] += any(n["rol"].startswith("Convoca") for n in o["nodos"])
@@ -272,3 +287,4 @@ for o in out:
     c["con director de formación"] += any(n["rol"] == "Dirige la formación" for n in o["nodos"])
     for i in o["ind"]: c["ind:" + i] += 1
 print(dict(c)); print(collections.Counter(o["ambito"] for o in out))
+print("personas que controlan 3 o más cuerpos:", len(llave)); [print(f'  {x["n"]:3} {x["nombre"][:34]:34} {x["puesto"][:50]}') for x in llave[:12]]
