@@ -1,0 +1,400 @@
+[
+ {
+  "escuela_o_organo": "Escuela de Hacienda Pública / Instituto de Estudios Fiscales",
+  "cuerpos": [
+   "ARQUITECTOS DE LA HACIENDA PÚBLICA",
+   "ARQUITECTOS TÉCNICOS AL SERVICIO DE LA HACIENDA PUBLICA",
+   "SUPERIOR DE GESTIÓN CATASTRAL",
+   "TÉCNICO DE AUDITORIA Y CONTABILIDAD",
+   "TÉCNICO DE GESTIÓN CATASTRAL"
+  ],
+  "n_cuerpos": 5
+ },
+ {
+  "escuela_o_organo": "Subdirección General de Recursos Humanos, Ministerio de Transportes y Movilidad Sostenible",
+  "cuerpos": [
+   "ASTRÓNOMOS",
+   "ESPECIAL FACULTATIVO DE MARINA CIVIL",
+   "INGENIEROS AERONÁUTICOS",
+   "INGENIEROS DE CAMINOS, CANALES Y PUERTOS DEL ESTADO",
+   "INGENIEROS GEÓGRAFOS",
+   "INGENIEROS NAVALES",
+   "INGENIEROS TÉCNICOS AERONÁUTICOS",
+   "INGENIEROS TÉCNICOS DE OBRAS PÚBLICAS",
+   "INGENIEROS TÉCNICOS EN TOPOGRAFÍA",
+   "SUP. DE ESPEC. TRANSP., INFRAESTR. Y SEG. OO.AA. Y AE MITMA, ESP. SEG. E INTEROPERABILIDAD FERROVIARIA",
+   "SUP. DE ESPEC. TRANSP., INFRAESTR. Y SEG. OO.AA. Y AE MITMA, ESP. SEGURIDAD TRANSPORTE AÉREO",
+   "SUP. DE ESPEC. TRANSP., INFRAESTR. Y SEG. OO.AA. Y AE MITMA, ESP. TRANSPORTE, MOVILIDAD E INFRAESTRUCTURAS"
+  ],
+  "n_cuerpos": 13
+ },
+ {
+  "escuela_o_organo": "Escuela Diplomática",
+  "cuerpos": [
+   "CARRERA DIPLOMÁTICA"
+  ],
+  "n_cuerpos": 1
+ },
+ {
+  "escuela_o_organo": "Secretaría de Estado de Cultura",
+  "cuerpos": [
+   "AYUDANTES DE ARCHIVOS, BIBLIOTECAS Y MUSEOS",
+   "FACULTATIVO DE ARCHIVEROS, BIBLIOTECARIOS Y ARQUEÓLOGOS (ARCHIVOS)",
+   "FACULTATIVO DE ARCHIVEROS, BIBLIOTECARIOS Y ARQUEÓLOGOS (BIBLIOTECAS)",
+   "FACULTATIVO DE CONSERVADORES DE MUSEOS"
+  ],
+  "n_cuerpos": 4
+ },
+ {
+  "escuela_o_organo": "Secretaría General de Instituciones Penitenciarias",
+  "cuerpos": [
+   "ENFERMEROS DE INSTITUCIONES PENITENCIARIAS",
+   "ESPECIAL DE INSTITUCIONES PENITENCIARIAS",
+   "FACULTATIVO DE SANIDAD PENITENCIARIA",
+   "SUPERIOR DE TÉCNICOS DE INSTITUCIONES PENITENCIARIAS"
+  ],
+  "n_cuerpos": 4
+ },
+ {
+  "escuela_o_organo": "Ministry of Health and participating directorates; course director appointed by Subsecretaría",
+  "cuerpos": [
+   "FARMACÉUTICOS TITULARES",
+   "MÉDICOS TITULARES",
+   "TÉCNICA DE GESTIÓN DE ORGANISMOS AUTÓNOMOS, ESP.SANIDAD Y CONSUMO"
+  ],
+  "n_cuerpos": 3
+ },
+ {
+  "escuela_o_organo": "Subsecretaría de Agricultura, Pesca y Alimentación",
+  "cuerpos": [
+   "INGENIEROS AGRÓNOMOS DEL ESTADO",
+   "INGENIEROS TÉCNICOS EN ESPECIALIDADES AGRÍCOLAS",
+   "NACIONAL VETERINARIO",
+   "TIT.ESCUELAS TÉCNICAS GRADO MEDIO OO.AA. DEL MAPA",
+   "TÉCNICOS FACULTATIVOS SUPERIORES OO.AA. DEL MINISTERIO DE AGRICULTURA, PESCA Y ALIMENTACIÓN"
+  ],
+  "n_cuerpos": 5
+ },
+ {
+  "escuela_o_organo": "Subsecretaría para la Transición Ecológica y el Reto Demográfico",
+  "cuerpos": [
+   "INGENIEROS DE MINAS DEL ESTADO",
+   "INGENIEROS DE MONTES DEL ESTADO",
+   "INGENIEROS TÉCNICOS FORESTALES",
+   "TITULADOS ESCUELAS TÉCNICAS DE GRADO MEDIO DE OO.AA. DEL MINISTERIO DE MEDIO AMBIENTE",
+   "TÉCNICOS FACULTATIVOS SUPERIORES OO.AA. DEL MINISTERIO DE MEDIO AMBIENTE"
+  ],
+  "n_cuerpos": 5
+ },
+ {
+  "escuela_o_organo": "Subsecretaría de Industria y Turismo; may collaborate with EOI",
+  "cuerpos": [
+   "INGENIEROS INDUSTRIALES DEL ESTADO"
+  ],
+  "n_cuerpos": 1
+ },
+ {
+  "escuela_o_organo": "Subsecretaría de Economía, Comercio y Empresa; collaborating training institutions",
+  "cuerpos": [
+   "INGENIEROS TÉCNICOS DEL SOIVRE",
+   "INSPECTORES DEL SOIVRE"
+  ],
+  "n_cuerpos": 2
+ },
+ {
+  "escuela_o_organo": "Instituto de Estudios Fiscales, coordinated with AEAT",
+  "cuerpos": [
+   "EJECUTIVO DEL S.V.A., ESPECIALIDAD DE COMUNICACIONES",
+   "EJECUTIVO DEL S.V.A., ESPECIALIDAD DE INVESTIGACIÓN",
+   "EJECUTIVO DEL S.V.A., ESPECIALIDAD DE NAVEGACIÓN",
+   "EJECUTIVO DEL S.V.A., ESPECIALIDAD DE PROPULSIÓN",
+   "PROFESORES QUÍMICOS DE LABORATORIO DE ADUANAS",
+   "SUPERIOR DE VIGILANCIA ADUANERA, ESP. DE COMUNICACIONES",
+   "SUPERIOR DE VIGILANCIA ADUANERA, ESP. DE INVESTIGACIÓN",
+   "SUPERIOR DE VIGILANCIA ADUANERA, ESP. DE NAVEGACIÓN",
+   "SUPERIOR DE VIGILANCIA ADUANERA, ESP. DE PROPULSIÓN"
+  ],
+  "n_cuerpos": 9
+ },
+ {
+  "escuela_o_organo": "INAP",
+  "cuerpos": [
+   "SUPERIOR DE ADMINISTRADORES CIVILES DEL ESTADO",
+   "SUPERIOR SISTEMAS Y TECNOLOG.INFORMACIÓN ADMÓN.DEL ESTADO"
+  ],
+  "n_cuerpos": 2
+ },
+ {
+  "escuela_o_organo": "Instituto de Estudios Fiscales (IEF), coordinated with AEAT",
+  "cuerpos": [
+   "SUPERIOR DE INSPECTORES DE HACIENDA DEL ESTADO",
+   "TÉCNICO DE HACIENDA"
+  ],
+  "n_cuerpos": 2
+ },
+ {
+  "escuela_o_organo": "Instituto de Estudios Fiscales",
+  "cuerpos": [
+   "SUPERIOR DE INSPECTORES DE SEGUROS DEL ESTADO",
+   "SUPERIOR DE INTERVENTORES Y AUDITORES DEL ESTADO"
+  ],
+  "n_cuerpos": 2
+ },
+ {
+  "escuela_o_organo": "Escuela de la Inspección de Trabajo y Seguridad Social",
+  "cuerpos": [
+   "SUBINSPECTORES LABORALES - ESCALA DE EMPLEO Y SEGURIDAD SOCIAL",
+   "SUBINSPECTORES LABORALES - ESCALA DE SEGURIDAD Y SALUD LABORAL",
+   "SUPERIOR DE INSPECTORES DE TRABAJO Y SEGURIDAD SOCIAL"
+  ],
+  "n_cuerpos": 3
+ },
+ {
+  "escuela_o_organo": "Agencia Estatal de Meteorología (AEMET)",
+  "cuerpos": [
+   "DIPLOMADOS EN METEOROLOGÍA DEL ESTADO",
+   "OBSERVADORES DE METEOROLOGÍA DEL ESTADO",
+   "SUPERIOR DE METEORÓLOGOS DEL ESTADO"
+  ],
+  "n_cuerpos": 3
+ },
+ {
+  "escuela_o_organo": "Subsecretaría de Economía, Comercio y Empresa; collaborating public/private training institutions",
+  "cuerpos": [
+   "DIPLOMADOS COMERCIALES DEL ESTADO",
+   "SUPERIOR DE TÉCNICOS COMERCIALES Y ECONOMISTAS DEL ESTADO"
+  ],
+  "n_cuerpos": 2
+ },
+ {
+  "escuela_o_organo": "Subsecretaría de Inclusión, Seguridad Social y Migraciones regulates course content and development by resolution.",
+  "cuerpos": [
+   "GESTIÓN DE LA ADMINISTRACIÓN DE LA SEGURIDAD SOCIAL",
+   "SUPERIOR DE ACTUARIOS, ESTADÍSTICOS Y ECONOMISTAS DE LA SEGURIDAD SOCIAL, ESCALA ACTUARIOS",
+   "SUPERIOR DE TÉCNICOS DE LA ADMINISTRACIÓN DE LA SEGURIDAD SOCIAL"
+  ],
+  "n_cuerpos": 3
+ },
+ {
+  "escuela_o_organo": "Intervención General de la Seguridad Social / Subdirección General de Organización, Planificación y Gestión de Recursos",
+  "cuerpos": [
+   "GESTIÓN DE LA ADMÓN. DE LA S.S., ESP.AUDITORÍA Y CONTABILIDAD",
+   "SUPERIOR DE INTERVENTORES Y AUDITORES DE LA ADMINISTRACIÓN DE LA SEGURIDAD SOCIAL"
+  ],
+  "n_cuerpos": 2
+ },
+ {
+  "escuela_o_organo": "Course director proposed by Dirección del Servicio Jurídico de la Seguridad Social; Subsecretaría regulates it",
+  "cuerpos": [
+   "SUPERIOR DE LETRADOS DE LA ADMINISTRACIÓN DE LA SEGURIDAD SOCIAL"
+  ],
+  "n_cuerpos": 1
+ },
+ {
+  "escuela_o_organo": "INSS central and provincial directorates; course director appointed by Subsecretaría",
+  "cuerpos": [
+   "MÉDICOS-INSPECTORES C.INSPECCIÓN SANITARIA DE LA ADMINISTRACIÓN DE LA SEGURIDAD SOCIAL"
+  ],
+  "n_cuerpos": 1
+ },
+ {
+  "escuela_o_organo": "Dirección General de Tráfico",
+  "cuerpos": [
+   "SUPERIOR DE TÉCNICOS DE TRÁFICO"
+  ],
+  "n_cuerpos": 1
+ },
+ {
+  "escuela_o_organo": "Subsecretaría de Ciencia, Innovación y Universidades regulates course content/development by resolution.",
+  "cuerpos": [
+   "TECNÓLOGOS DE ORGANISMOS PÚBLICOS DE INVESTIGACIÓN",
+   "TÉCNICOS ESPECIALIZADOS DE ORGANISMOS PÚBLICOS DE INVESTIGACIÓN",
+   "TÉCNICOS SUPERIORES ESPECIALIZADOS DE ORGANISMOS PÚBLICOS DE INVESTIGACIÓN"
+  ],
+  "n_cuerpos": 3
+ },
+ {
+  "escuela_o_organo": "Oficina Española de Patentes y Marcas (OEPM), under delegated material management",
+  "cuerpos": [
+   "TITULADOS SUPERIORES DE OO.AA. DEL MINISTERIO DE INDUSTRIA, TURISMO Y COMERCIO, ESP. PROPIEDAD INDUSTRIAL"
+  ],
+  "n_cuerpos": 1
+ },
+ {
+  "escuela_o_organo": "Centro Español de Metrología (CEM), under delegated material management",
+  "cuerpos": [
+   "TITULADOS SUPERIORES DE OO.AA. DEL MINISTERIO DE INDUSTRIA, TURISMO Y COMERCIO, ESP. METROLOGÍA"
+  ],
+  "n_cuerpos": 1
+ },
+ {
+  "escuela_o_organo": "Instituto Nacional de Seguridad y Salud en el Trabajo",
+  "cuerpos": [
+   "TITULADOS SUPERIORES DEL INSTITUTO NACIONAL DE SEGURIDAD E HIGIENE EN EL TRABAJO"
+  ],
+  "n_cuerpos": 1
+ },
+ {
+  "escuela_o_organo": "INAP / Subdirección de Aprendizaje",
+  "cuerpos": [
+   "GESTIÓN DE LA ADMINISTRACIÓN CIVIL DEL ESTADO",
+   "GESTIÓN DE SISTEMAS E INFORMÁTICA DE LA ADMÓN. DEL ESTADO",
+   "TÉCNICA DE GESTIÓN DE ORGANISMOS AUTÓNOMOS"
+  ],
+  "n_cuerpos": 3
+ },
+ {
+  "escuela_o_organo": "Ministry of Health and participating directorates",
+  "cuerpos": [
+   "GESTIÓN DE ORGANISMOS AUTÓNOMOS, ESP.SANIDAD Y CONSUMO"
+  ],
+  "n_cuerpos": 1
+ },
+ {
+  "escuela_o_organo": "Consejo de Seguridad Nuclear",
+  "cuerpos": [
+   "SUP.DEL C. DE SEGURIDAD NUCLEAR Y PROTEC.RADIOLOG"
+  ],
+  "n_cuerpos": 1
+ },
+ {
+  "escuela_o_organo": "Escuela Nacional de Policía / División de Formación y Perfeccionamiento",
+  "cuerpos": [
+   "Policía Nacional - Escala Básica, categoría de Policía",
+   "Policía Nacional - Escala Ejecutiva, inspector/a entry"
+  ],
+  "n_cuerpos": 2
+ },
+ {
+  "escuela_o_organo": "AEAT; practice centres or bodies as set by resolution (6.4)",
+  "cuerpos": [
+   "AGENTES DEL S.V.A., ESPECIALIDAD INVESTIGACIÓN",
+   "AGENTES DEL S.V.A., ESPECIALIDAD MARÍTIMA"
+  ],
+  "n_cuerpos": 2
+ },
+ {
+  "escuela_o_organo": "Penitentiary centres (tutored placements); the centre's monitoring body reports on the trainee",
+  "cuerpos": [
+   "AYUDANTES DE INSTITUCIONES PENITENCIARIAS"
+  ],
+  "n_cuerpos": 1
+ },
+ {
+  "escuela_o_organo": "Dirección General de Tráfico (Centro de Formación, Móstoles)",
+  "cuerpos": [
+   "GENERAL ADMINISTRATIVO ADMÓN.EST. (ESP. TRÁFICO)"
+  ],
+  "n_cuerpos": 1
+ },
+ {
+  "escuela_o_organo": "Subsecretaría del Departamento (aspirants depend directly on it during the course)",
+  "cuerpos": [
+   "AGENTES MEDIOAMBIENTALES DE OO.AA. DEL M. MEDIO AMBIENTE"
+  ],
+  "n_cuerpos": 1
+ },
+ {
+  "escuela_o_organo": "Academia de Cabos y Guardias, Baeza; Colegio de Guardias Jóvenes, Valdemoro; Guardia Civil units",
+  "cuerpos": [
+   "Guardia Civil - Escala de Cabos y Guardias"
+  ],
+  "n_cuerpos": 1
+ },
+ {
+  "escuela_o_organo": "Initial presentation at Academia General Militar; later Guardia Civil phase not separately verified",
+  "cuerpos": [
+   "Guardia Civil - Escala de Oficiales"
+  ],
+  "n_cuerpos": 1
+ },
+ {
+  "escuela_o_organo": "Defensa and Interior jointly approve formation plans (art. 45)",
+  "cuerpos": [
+   "Guardia Civil - Escala de Suboficiales"
+  ],
+  "n_cuerpos": 1
+ },
+ {
+  "escuela_o_organo": "Academia General Militar (initial presentation)",
+  "cuerpos": [
+   "Cuerpo General del Ejército de Tierra - escala oficiales",
+   "Cuerpo de Ingenieros Politécnicos del Ejército de Tierra - escala oficiales",
+   "Cuerpo de Ingenieros Politécnicos del Ejército de Tierra - escala técnica",
+   "Cuerpo de Intendencia del Ejército de Tierra - escala oficiales"
+  ],
+  "n_cuerpos": 4
+ },
+ {
+  "escuela_o_organo": "Academia General Básica de Suboficiales (Talarn)",
+  "cuerpos": [
+   "Cuerpo General del Ejército de Tierra - escala suboficiales"
+  ],
+  "n_cuerpos": 1
+ },
+ {
+  "escuela_o_organo": "Centros de Formación listed by vacancy/specialty in convocatoria annexes",
+  "cuerpos": [
+   "Cuerpo General de la Armada - escala marinería",
+   "Cuerpo General del Ejército de Tierra - escala tropa",
+   "Cuerpo General del Ejército del Aire - escala tropa",
+   "Cuerpo de Infantería de Marina - escala tropa"
+  ],
+  "n_cuerpos": 4
+ },
+ {
+  "escuela_o_organo": "Escuela Naval Militar (initial presentation)",
+  "cuerpos": [
+   "Cuerpo General de la Armada - escala oficiales",
+   "Cuerpo de Infantería de Marina - escala oficiales",
+   "Cuerpo de Ingenieros de la Armada - escala oficiales",
+   "Cuerpo de Ingenieros de la Armada - escala técnica",
+   "Cuerpo de Intendencia de la Armada - escala oficiales"
+  ],
+  "n_cuerpos": 5
+ },
+ {
+  "escuela_o_organo": "Escuela de Suboficiales de la Armada (San Fernando)",
+  "cuerpos": [
+   "Cuerpo General de la Armada - escala suboficiales",
+   "Cuerpo de Infantería de Marina - escala suboficiales"
+  ],
+  "n_cuerpos": 2
+ },
+ {
+  "escuela_o_organo": "Academia General del Aire y del Espacio (initial presentation)",
+  "cuerpos": [
+   "Cuerpo General del Ejército del Aire - escala oficiales",
+   "Cuerpo de Ingenieros del Ejército del Aire - escala oficiales",
+   "Cuerpo de Ingenieros del Ejército del Aire - escala técnica",
+   "Cuerpo de Intendencia del Ejército del Aire - escala oficiales"
+  ],
+  "n_cuerpos": 4
+ },
+ {
+  "escuela_o_organo": "Academia Básica del Aire y del Espacio (Virgen del Camino)",
+  "cuerpos": [
+   "Cuerpo General del Ejército del Aire - escala suboficiales"
+  ],
+  "n_cuerpos": 1
+ },
+ {
+  "escuela_o_organo": "Academia Central de la Defensa after initial formation; initial presentation AGM (officers) / AGBS (music subofficers) in notice",
+  "cuerpos": [
+   "Cuerpo Jurídico Militar - escala oficiales",
+   "Cuerpo Militar de Intervención - escala oficiales",
+   "Cuerpo Militar de Sanidad - escala oficiales",
+   "Cuerpo Militar de Sanidad - escala oficiales enfermeros",
+   "Cuerpo de Músicas Militares - escala oficiales",
+   "Cuerpo de Músicas Militares - escala suboficiales"
+  ],
+  "n_cuerpos": 6
+ },
+ {
+  "escuela_o_organo": "CCAA coordinates police professional formation through training schools (LO 2/1986 art. 39.d)",
+  "cuerpos": [
+   "Local: Administración Especial - Servicios Especiales: Policía Local y auxiliares"
+  ],
+  "n_cuerpos": 1
+ }
+]
